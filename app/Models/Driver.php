@@ -23,8 +23,9 @@ class Driver extends Model
             'email',
             'password',
             'gender',
+            'phone_number',
             'type_of_car',
-            'license_number',
+            'vehicle_license_number',
         ];
     
         /**

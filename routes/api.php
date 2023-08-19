@@ -22,6 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Auths
 
 Route::post('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/register-driver', [AuthController::class, 'registerDriver'])->name('registerDriver');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 

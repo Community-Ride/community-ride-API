@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Driver;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Mail\forgotPasswordMail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
-class DriverController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +19,7 @@ class DriverController extends Controller
         //
     }
 
-    public function updateDriverPassword(Request $request)
+    public function updatePassword(Request $request)
 {
     $user = Auth::user(); // Get the authenticated user
 
@@ -36,13 +36,12 @@ class DriverController extends Controller
     }
 
     // Update the password
-    Driver::whereId(auth()->user()->id)->update([
+    User::whereId(auth()->user()->id)->update([
             'password' => Hash::make($request->new_password)
         ]);
 
     return response(['message' => 'Password updated successfully'], 200);
 }
-
 
     /**
      * Show the form for creating a new resource.
@@ -63,7 +62,7 @@ class DriverController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Driver $driver)
+    public function show(string $id)
     {
         //
     }
@@ -71,7 +70,7 @@ class DriverController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Driver $driver)
+    public function edit(string $id)
     {
         //
     }
@@ -79,7 +78,7 @@ class DriverController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Driver $driver)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -87,7 +86,7 @@ class DriverController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Driver $driver)
+    public function destroy(string $id)
     {
         //
     }
